@@ -13,7 +13,7 @@ $('セレクタ').css({
   'プロパティ2':'値2',
   :
   :
-  
+
 })
 
 $(function(){
@@ -77,3 +77,30 @@ $(function(){
     $('.box1').removeClass('box1-ext');
   });
 })
+
+$(function(){
+  $('.bg1').on('click', function(){
+    $('.bg1').slideUp();
+  });
+  $('.bg2').on('click', function(){
+    $('.bg2').slideUp();
+  });
+  $('.bg3').on('click',function(){
+    $('.bg3').slideUp();
+  });
+  $('.bg').on('click', function(){
+    $('.bg4').slideUp();
+  });
+});
+
+$(function(){
+  $('.box1').on('click', function(){
+    $(this).slideUp();
+  });
+});
+
+$(function(){
+  $('button').on('click', function(){
+    $('ul').children().css('color','red');
+  });
+});
