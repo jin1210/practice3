@@ -61,3 +61,16 @@ end
 
 input = gets.to_s
 puts sports(input)
+
+def break(number)
+ if 6 < number && number < 8
+  "45 min"
+ elsif 8 < number
+  "60 min"
+ else
+  "no break"
+ end
+end
+
+input = gets.to_i
+puts break(input)
