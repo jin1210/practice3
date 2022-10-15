@@ -84,3 +84,13 @@ puts
 n = gets.to_i
 
 puts sprintf('%03d', n)
+
+s,t = gets.split.map(&:to_i)
+
+if t < s
+ puts "- #{s-t}"
+elsif s < t
+ puts "+ #{t-s}"
+else
+ puts 0
+end
