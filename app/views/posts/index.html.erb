@@ -45,9 +45,35 @@ where
 AかつBを指定するAND演算子
 
 select
- * 
+ *
 from
  employees
 where
  emp_no >= 10003 AND
  emp_no < 10005
+
+ select
+  *
+ from
+  employees
+ where
+  emp_no between 10002 and 10004
+
+いずれかの条件に一致するレコードを検索するIN演算子
+
+select
+ *
+from
+ employees
+where
+ emp_no in (10001,10003,10005)
+
+
+文字列の部分一列を検索するlike演算子
+
+select
+ *
+from
+ employees
+where
+ first_name like 'kyo%'
