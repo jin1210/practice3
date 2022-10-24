@@ -162,3 +162,81 @@ puts "no.2" + array[1].to_s
 array
 puts "no.3" + array.to_s
 
+配列の要素を取得するには、配列の入った変数に対して[]演算子にインデックス(添え字)を
+指定します。
+例えば、array変数のインデックス0番目の要素を取得するtには、以下のようなコードを
+書きます。
+
+array[0]
+
+array = ["samurai", "ruby", "rails" ,"python"]
+
+puts "no.1" + array[0].to_s
+puts "no.2" + array[1].to_s
+puts "no.3" + array[2].to_S
+puts "no.4" + array[3].to_s
+
+配列に要素を追加するには、配列の入った変数に[]演算子で存在しないインデックスを
+指定し、それに対し値を代入します。
+
+また、簡単に配列を要素を追加する方法として、配列のpushメソッドがあります。
+pushメソッドは、配列の末尾に指定した値を追加します。
+
+array = ["samurai","ruby","rails","python"]
+
+puts "no.1" + array[4].to_s
+
+代入
+array[4] = "java"
+
+代入の結果を表示
+puts "no.2" + array[4].to_s
+
+配列全体を表示
+puts "no.3" + array.to_s
+
+pushメソッドでも追加できる
+array.push("PHP")
+puts "no.4" + array.to_S
+
+
+配列の要素を更新するには、配列の入った変数に[]演算子で既存のインデックスを
+指定し、それに対し値を代入します。例えば、array変数のインデックス1番目の
+要素を更新するには、
+
+配列の要素を排除するには、配列のdeleteメソッドを使用します。deleteメソッドに値
+を指定すると、配列中の同じ値をもつ要素を排除します。
+
+また、配列に[]演算子でインデックスの範囲を指定し、それに空の配列リテラル[]
+を代入することで、指定したインデックスの範囲分だけ配列から要素を削除できます。
+
+array = ["samurai","ruby","rails","python","ruby"]
+puts "no.1" + array.to_S
+
+同じ要素をすべて削除
+array.delete("ruby")
+puts "no.2" + array.to_s
+
+範囲を指定して削除出来る
+array = ["samurai","ruby","rails","python"]
+
+インデックスの1から2個の要素を削除
+array[1.2] = []
+puts "no.3" + array.to_s
+
+配列の要素数を取得するには、sizeメソッドを実行します。また、sizeメソッド
+のエイリアスであるlengthメソッドでも、配列の要素数を取得できます。
+
+さらにcountメソッドでも配列の要素数を取得できます。
+countメソッドの引数に値を指定すると、配列中で同じ値を持つ要素数を取得できます。
+
+array = ["samurai","ruby","rails","python","ruby"]
+
+puts "no,1" + array.size.to_s
+
+puts "no.2" + array.length.to_s
+
+puts "no.3" + array.count.to_S
+
+puts "no.4" + array.count("ruby").to_s
+
