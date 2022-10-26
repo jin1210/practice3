@@ -324,3 +324,71 @@ array.each {|item|
 
 以上のように、eachメソッドにより配列の要素が1つ1つぼろっくのブロック
 引数に与えられ、ブロックが各要素文だけ実行されます。
+
+配列とは、データをたくさん詰められる箱のようなものです。そしてそのデータの一つ一つを要素を言います。
+
+fruits = ["apple","berry","banana"]
+
+という配列においては、配列名はfruitsで要素はapple berry banana になります。
+
+配列の追加
+
+fruits = ["apple","berry","banana"]
+
+fruits.push("lemon")
+
+puts fruits
+
+fruits = ["apple","berry","banana"]
+
+fruits << "lemon"
+
+puts fruits
+
+配列の削除
+
+fruits = ["apple","berry","banana"]
+
+fruits.delete("berry")
+
+puts fruits
+
+オブジェクト.each do |変数|
+実行する処理
+実行する処理
+end
+
+fruits = ["apple","berry","banana"]
+
+fruits.each do |hoge|　←each文を定義する(hogeは要素の中身全てを表す)
+
+print hoge + ","　←要素の中身1つ1つに","をつけて出力させる
+
+end
+
+empty(配列が空かどうか調べる)
+
+arr = []
+p arr.empty?
+
+array = [1.2.3]
+p array.empty?
+
+include(要素が含まれるか調べる)
+array = [1.2.3]
+p array.include?(3)
+
+配列に指定した要素が含まれているか確認したいときはinclude?メソッドを使用思案す。
+指定した引数が配列の要素に含まれていればtrue,含まれていない場合はfalseを
+返します
+
+any?(最低1つでも条件を満たすか調べる)
+array = [1.2.3]
+p array.any?{|a| a > 2}
+
+all?
+
+array = [1.2.3]
+p array.all?{|a| a > 2}
+
+配列の要素がすべて指定した条件に満たしているか確認したい場合はall?
