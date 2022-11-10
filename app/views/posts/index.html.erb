@@ -141,3 +141,272 @@
 
     	   無限ループ…永久に繰り返しをし続ける制御構造のこと
 </div>
+<div class="11月10日">
+        package chap04;
+
+      　public class chap04_4_1_4_19 {
+
+      	public static void main(String[] args) {
+
+      		int sansu = 20;
+      		int kokugo = 20;
+      		int rika = 20;
+      		int eigo = 20;
+      		int syakai = 20;
+
+      		int sum = sansu + kokugo + rika +syakai +eigo;
+
+      		int avg = sum/5;
+
+      		System.out.println("合計点:"+sum);
+      		System.out.println("合計点:"+avg);
+
+      		/*
+      		  テスト科目が増えるたびに、それをコードに追加しなければならない
+      		  まとめて処理ができない
+      		  私たちは一組として計算できるが、javaは一つの箱として見ているのでまとめて見ることができない
+      		*/
+
+      		/*
+      		  ある一定のルールにしたがってデータを格納する形式をデータ構造という
+      		  その代表的なものが配列です。
+      		  配列(array)とは同一種類の複数データを並び順で格納するデータ構造です。
+      		  一つを要素年、配列の各要素には同一種類のデータしか格納できない。
+      		  要素には番号がついていてそれを添え字（index）という。
+      		  0~から始まる
+      		*/
+
+      	}
+
+      	public static void code_1() {
+
+      		int[] scores;//配列変数の宣言
+      		scores = new int[5];//要素の作成と代入
+
+      		/*
+      		  int型の配列を５つ生成する(5つメモリーを準備する)
+      		  int型は参照型ではなく、基本型のため普通はそのままメモリーに記録されるが
+      		  配列のためString型のように参照される。
+      		*/
+
+      	}
+
+      	public static void code_2() {
+
+      		int[] scores = new int[5];//配列変数の宣言と要素の作成と代入を同時に行う
+
+      		int num = scores.length;//配列の変数名.lengthで配列の要素数の取得
+      		System.out.println("要素の数:"+num);
+
+      	}
+
+      	public static void code_3() {
+
+      		int[] scores;
+      		scores = new int[5];
+      		scores[1] = 30;//2つめの要素に30を代入
+
+      		System.out.println(sscores[1]);
+
+      	}
+
+      	public static void code_4() {
+
+      		int x;
+
+      		System.out.println(x);//xに何も値がない＝初期化をしていないためエラーがでる
+
+      	}
+
+      	public static void code_5() {
+
+      		int[] scores = new int[5];
+
+      		int[] scores1 = new int[] {20,30,40,50,80};//省略方法
+      		int[] scores2 = {20,30,40,50,80};//省略方法2
+
+      		System.out.println(scores[0]);
+
+      		/*
+      		  特に代入をしていなくても配列を作った時点で初期化され
+      		  初期値の「0」の数字が入る。
+      		  boolean型はfalse、string型はnullが初期値。
+      		*/
+
+      	}
+
+      	public static void code_6() {
+
+      		int[] scores = {20,30,40,50,80};
+      		int sum = scores[1] + scores[2] + scores[3] + scores[4] + scores[5];
+      	    int avg = sum / scores.length;
+
+      		System.out.println("合計点:"+sum);
+      		System.out.println("平均点:"+avg);
+
+      		//要素数の添え字は0～4なのでコンパイルエラーとなる。
+
+      	}
+
+      	public static void code_7() {
+
+      		int[] scores = {20,30,40,50,80};
+      		for (int i = 0;i < scores.length; i++) {
+
+      			System.out.println(scores[i]);//ループのたびにiの値が0～4で変化する
+
+      		}
+
+      	}
+
+      	public static void code_8() {
+
+      		int[] scores = {20,30,40,50,80};
+      		int sum = 0;//集計結果を入れるための変数を初期化して準備
+      		for (int i = 0;i < scores.length; i++) {
+
+      			sum += scores[i];//1科目ずつ変数sumに合算する
+
+      		}
+
+      		int avg = sum /scores.length;
+
+      		System.out.println("合計点:"+sum);
+      		System.out.println("平均点:"+sum);
+
+      	}
+
+      	public static void code_9() {
+
+      		int[] scores = {20,30,40,50,80};
+      		int count = 0;//変数宣言と初期化
+      		for (int i = 0; i < scores.length; i++) {
+
+      			if(scores[i]>=50) {
+      				count++;
+      			}
+
+      		}
+      		System.out.println("50点以上の科目の数は:"+count);
+      	}
+
+      	public static void code_10() {
+
+      		int[] seq = new int[10];
+
+      		for(int i = 0; i< seq.length; i++) {
+
+      			seq[1] = new fava.util.Random().nextInt(4);
+
+      		}
+
+      		for(int i = 0; i < seq.length; i++ ) {
+
+      			switch([seq[i]]) {
+
+      			case0:
+      				System.out.println("A");
+      			    break;
+      			case1:
+      			    System.out.println("T");
+      			    break;
+      			case2:
+      			    System.out.println("G");
+      			    break;
+      			case3:
+      			    System.out.println("C");
+      			    break;
+
+      		    }
+
+      		}
+
+      		char[] base = {'A','T','G','C'};
+      		System.out.println(base[seq[i]]+"");
+
+      		int vaseType = seq[i];//i番目の数値を取得
+      		char baseChar = base[baseType];//数値に対応する記号を取得
+      		System.out.println(baseChar+"");//記号を画面に表示
+      	}
+
+      	public static void code_11() {
+
+      		int[] scores = {20,30,40,50,80};
+
+      		for(int i = 0; i< scores.length; i++) {
+
+      			System.out.println(scores[i]);
+
+      		}
+
+      		for(int value : scores) {
+      			System.out.println(value);
+      		}
+      		//任意の変数名に指定した変数に配列の要素の内容が格納されます。
+      		//これを拡張for文という。
+
+      	}
+
+      	public static void code4_15() {
+
+      		int[] arrayA = {1,2,3};
+      		int[] arrayB;
+
+      		arrayB = arrayA;//住所番号を代入している
+
+      		arrayB[0] = 100;
+
+      		System.out.println(arrayA[0]);
+
+      		/*
+      		最初の要素のアドレスが変数に記録されている
+      		住所番号を代入しているので参照先の値が一緒になっている
+      		先頭の番号がわかればあとはインデックス番号で呼び出せる
+      		int[] scores = new int[5]のメモリー上の処理
+      		①int型の要素を5つ持つ配列がメモリ上に作成される。
+      		②int[]型の配列変数scoreがメモリ上に作成される。
+      		③配列変数scoreに配列の戦闘要素のアドレスが記録される。
+      		プログラムからscores[n]と指定されたら
+      		①scoresから番地(8832)を取り出し、配列(先頭要素)をみつける。
+      		②見つけた配列の先頭要素からn個後ろの要素の区画を読み書きする。
+      		*/
+      	}
+
+      	public static void code_11() {
+
+      		boolean judge = true;
+
+      		if (judge == true) {
+
+      			int[] array = {1,2,3};
+
+      		}
+      		/*
+      		ifブロック内で配列を宣言しているので
+      		ブロックを抜けたら消滅する。
+      		一方で、newで確保された３つの要素は普通の変数ではないので、ブロックが
+      		終了しても寿命は迎えません。
+      		メモリ内のごみとなってメモリを圧迫してしまう。
+      		javaには、ガベージコレクションという仕組みがあり、
+      		度の変数からも参照されなくなったメモリ領域を自動的に探しだして片づけてくれます。
+      		*/
+      	}
+
+      	public static void code_12() {
+
+      		int[] array = {1,2,3};
+      		array = null;
+      		array[0] = 10;
+      		/*
+      		配列変数arrayにnullを代入すると住所番号が空になり、
+      		値の参照先がなくなった状態になる。
+      		このことを参照を切るという。
+      		①int[]型などの参照型変数に代入すると、その変数はなにも参照しなくなる。
+      		②int型などの基本型変数には代入することはできない。
+      		*/
+
+      	}
+
+      }
+
+</div>
