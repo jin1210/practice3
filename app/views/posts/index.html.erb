@@ -539,4 +539,128 @@
     }
 
 </div>
-、ｌ
+<div class="11月13日">
+    package chap05;
+
+    public class practice {
+
+    	public static int add(int x,int y) {
+
+    		return x + y;
+
+    	}
+
+    	public static double add(double x, double y) {
+
+    		return x+ y;
+
+    	}
+
+    	public static String add(String x, String y) {
+
+    		return x+ y;
+
+    	}
+
+    	public static void main(String[] args) {
+
+    		System.out.println(add(10, 20));
+
+    		System.out.println(add(3.5, 2.7));
+
+    		System.out.println(add("Hello", "World"));
+
+    	}
+
+    	//同じ名前のメソッドをつけることをオーバーロードといいます。
+    	//仮引数が異なれば同じ名前のメソッドをつけることが許されます。
+    	//ＪＶＭが同じメソッドでも仮引数に合致するものを選んで実行してくれる。
+    	//引数の個数も合致するものから選ばれる。
+    	//メソッド宣言に記述するメソッド名、引数の個数や型とその並び順の情報をまとめて、メソッドのシグネチャといいます。
+    	//オーバーロードは「シグネチャが重複しない場合のみ許される」
+
+
+    	public static void printArray(int[] array) {
+
+    		for(int element : array) {
+
+    			System.out.println(element);
+
+    		}
+
+    	}
+
+    	public static void maain(String[] args) {
+
+    		int[] array = {1,2,3};
+
+    		printArray(array);
+
+    	}
+
+    	//メソッドに引き渡している数字はメモリーに記録されている配列の値ではなく、変数に記録されている住所情報。
+    	//値そのものが渡される呼び出しを値渡しと呼びます。
+    	//引数としてアドレスを渡すことを参照渡しといいます。
+    	/*
+    	  基本形の変数をメソッド呼び出して渡すと
+    	  ⑴呼び出し物の変数の内容が、呼び出し先の引数にコピーされる。
+    	  ⑵呼び出し先で引数の内容を書き換えても、呼び出し元の変数は変化しない。
+    	  参照渡しを行うと、呼び出し先で加えた変更が呼び出し元にも影響するようになる。
+    	*/
+
+    	public static void incArray(int[] array) {
+
+    		for (int i= 0; i < array.length; i++) {
+
+    			array[i]++;//要素に「+1」していてブロックをぬけるてもメモリーが書き変わったまま。
+
+    		}
+
+    	}
+
+    	public static void maaain(String[] args) {
+
+    		int[] array = {1,2,3};
+
+    		incArray(array);
+
+    		for(int i : array) {
+
+    			System.out.println(i);
+
+    		}
+
+    	}
+
+    	public static int[] makeArray(int size) {
+
+    		int[] newArray = new int[size];//番地情報が造られた
+    		for (int i = 0; i < newArray.length; i++) {
+
+    			newArray[i] = i;
+
+    		}
+
+    		return newArray;//アドレスを返す
+
+    	}
+
+    	public static void maaaain(String[] args) {
+
+    		int[] array = makeArray(3);
+
+    		for(int i : array) {//返ってきた番地情報からメモリーを参照する
+
+    			System.out.println(i);
+    		}
+
+    	}
+    	/*
+    	  javaプログラムを起動する際、プログラム起動時の追加情報のことをコマンドライン引数といいます。
+    	  プログラム起動時に指定したコマンドライン引数が、JVMによって配列に変換され、mainメソッド起動時に渡される。
+    	 */
+
+
+    }
+
+</div>
