@@ -1053,3 +1053,204 @@ public class Wizard {
 	
 }
 </div>
+<div class="11月18日">
+	package chap10;
+
+public class Hero {
+
+	String name;
+	int hp = 100;
+	
+	public void attack(Matango s) {
+		
+		System.out.println(this.name+"の攻撃");
+		
+		s.hp -= 5;
+		
+		System.out.println("5ポイントのダメージを与えた");
+		
+	}
+	
+	public void run() {
+		
+		System.out.println(this.name+"は逃げ出した");
+		
+	}
+	
+	public final void slip() {
+		
+		this.hp -= 5;
+		
+		System.out.println(this.name+"は転んだ");
+		System.out.println("5のダメージ");
+		
+	}
+	
+	public Hero() {
+		
+		System.out.println("ヒーロークラスのコンストラクタが起動しました");
+		
+	}
+	
+	
+}
+package chap10;
+
+public class Item {
+
+	String name;
+	int price;
+	
+	public Item(String name) {
+		
+		this.name = name;
+		this.price = 0;
+		
+	}
+	
+	public Item(String name,int price) {
+		
+		this.name = name;
+		this.price = price;
+		
+	}
+	
+	
+	
+}
+package chap10;
+
+public class Matango {
+
+	String name;
+	int hp;
+	
+}
+package chap10;
+
+public class SuperHero extends Hero {
+
+	boolean flying;
+	
+	public void attack(Matango s) {
+		
+//		System.out.println(this.name+"の攻撃");
+//		s.hp -= 5;
+//		System.out.println("5ポイントのダメージを与えた");
+//		
+//		if(this.flying) {
+//			
+//			System.out.println(this.name+"の攻撃");
+//			s.hp += 5;
+//			System.out.println("5ポイントのダメージを与えた");
+		
+		super.attack(s);
+		if(this.flying) {
+			
+			super.attack(s);
+			
+		}
+	
+	}
+	
+	public void fly() {
+		
+		this.flying = true;
+		System.out.println("飛び上がった");
+		
+	}
+	
+	public void land() {
+		
+		this.flying = false;
+		System.out.println("着地した");
+		
+	}
+	
+	public void run() {
+		
+		System.out.println(this.name+"は逃げ出した");
+		
+	}
+	
+	public SuperHero() {
+		
+		System.out.println("スーパーヒーローのコンストラクタが起動");
+		
+	}
+	
+}
+package chap10;
+
+public class Weapon extends Item{
+	
+	public Weapon() {
+		
+		super("名無しの剣");
+		
+	}
+	
+}
+package chap10;
+
+public class Main {
+
+	//以前作ったクラスとにかよったクラスを作る場合
+	//同じようなクラスをいくつも作ると修正や追加に手間がかかる
+	//把握も難しくなる
+	//しかしjavaには、このようなコードの重複を懸念することなく類似したクラスを作ることができる機能「継承」がある。
+	//extendsを使用すれば、親クラスを継承して子クラスができる。
+	//superheroクラスのソースコードにはrun()がありませんが、インスタンス化されればrun()を呼び出すことができます。
+	//extendsを利用してもととなるクラスの差分だけを記述して新たなクラスを宣言することができる。
+	//このような２つのクラスの関係を継承関係といいます。
+	//javaでは複数のクラスを親として多重継承を定義することを許していない。
+	//親クラスを継承して子クラスを宣言する際に、親クラスのメンバを子クラス側で上乗せすることをオーバーライドといいます。
+	//名前の似ているオーバーロードはメソッドの名前は一緒だけど引数が違うこと。	
+	//①親クラスに同じメンバがなければそのメンバは追加になる。
+	//②親クラスに同じメンバがあれば、そのメンバは上乗せされ上のものしか探されない。
+	//superheroクラスにrun();を追加すると、javaは外側のメソッドから探しに行って見つかり次第処理を終了する。
+	//オーバーライドを使用する場合、オーバーライドをわかりやすくするため@overrideをメソッドにつける
+	//Stringクラス(java.lang.String)は、このクラスを継承してほかのクラスを作ってはいけませんと特別に指定されているクラス
+	//javaでは宣言時にfinalがつけられているクラスは継承できないことになっている
+	//宣言にfinalがつけられてメソッドは、子クラスでオーバーライドができない
+	//フィールドはオーバーライドして使おうとしない
+	//superheroはheroクラスのメンバを持っており二重構造になっている
+	//インスタンスの外部からメソッドの実行依頼が届くと、多重構造のインスタンスは、極力、外側にある子インスタンス部分のメソッドで対応しようとします。
+	//superheroインスタンスは内部にsuperheroとしての逃げ方とheroとしての逃げかたの両方を持っています。
+	//親クラスのrun()には呼び出しが届かないため、子クラスのメソッドが呼ばれる。
+	//将来親クラスのメソッドに変更が加えられた場合、オーバーライドに齟齬が出てしまう可能性がある。
+	//super.を使って親インスタンスを呼び出すことで齟齬がでないようにできる
+	//superとは今より一つ内側のインスタンス部分を表す予約語です。
+	//親、子、孫クラスがいて、@overrideしたメソッドは孫から親をよびだせない
+	//javaでは、すべてのコンストラクタは、その先頭で必ず内部のインスタンス部分（親クラス）のコンストラクタを呼び出さなければならない
+	//本来superheroコンストラクタはsuper();の記述を入れなければならないが、コンパイラによって自動的に挿入される。
+	//子クラスのコンストラクラを呼び出す場合、親クラスのコンストラクラも呼び出されるため引数がないとエラーになる。
+	//子クラスのインストラクタに引数を指定することで解消される
+	//正しい継承は「is aの原則」というルールにのっとっている継承のことです。
+	//子クラス is a 親クラス(子クラスは親クラスの一種である)
+	//is aの関係がない場合、現実世界と乖離してしまい、オブジェクト指向の原則から外れてしまいます。
+	//正しい継承が行われている場合(is a)、子クラスになればなるほど具体的になる（特化）
+	//親クラスになるほど抽象的であいまいなものに一般化（汎化）になる
+	//継承関係を表す図を継承ツリーと呼ぶ
+	//しかし継承は、ある二つのクラスに特化・汎化の関係があることを示すための道具でもある
+	//矢印の先が一番抽象的になる
+	
+	public static void main(String[] args) {
+		
+		Hero h = new Hero();
+		
+		h.run();
+		
+		SuperHero sh = new SuperHero();
+		
+		sh.run();
+		
+		Weapon w = new Weapon();
+		
+		
+	}
+	
+	
+	
+}
+</div>
