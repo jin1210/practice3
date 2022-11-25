@@ -1659,3 +1659,131 @@ public class Main {
 
 }
 </div>
+<div class="11月25日">
+	package chap15;
+
+public class Main {
+
+	//文字列の情報を処理する様々な方法を総称して、文字列処理やテキスト処理といいます。
+	//Stringクラスに備わる文字列調査のメソッド
+	//内容が等しいか調べるpublic boolean equals(Object o)
+	//大文字、小文字を区別せず内容が等しいか調べるpublic boolean equalsignoreCase(String s)
+	//文字列長を調べるpublic int length()
+	//空文字か（長さが0か）を調べるpublic boolean isEmpty()
+	//文字列の内部から、別の文字列（または文字）を探すためのメソッド
+	//含まれるか否かだけを判定するもの
+	//文字列のどこに含まれているかという位置情報を返すもの
+	//一部に文字列ｓを含むかを調べるpublic boolean contains(String s)
+	//文字列ｓで始まるかを調べるpublic boolean startsWith(String s)
+	//文字列ｓで終わるかを調べるpublic boolean endsWith(String s)
+	//文字ｃｈ（または文字列str）が最初に登場する位置を調べるpublic int indexOf(int ch),public int indexOf(String str)
+	//文字ch(または文字列str)を後ろから偏差くして最初に登場する位置を調べるpublic int lastIndexOf(int ch),public int lastIndexOf(String str)
+	//引数で指定した文字列（部分文字列）がある文字列のどこに登場するかを探すためのメソッドもある
+	//文字列の先頭位置を0として部分文字列が見つかった場合、その位置を、見つからない場合、-1を返します。
+	//文字列の一部を別の文字列（または文字）として切り出すメソッドも準備されています。
+	//指定位置の一文字を切り出すpublic char charAt(int index)
+	//指定位置から始まる文字列を任意の長さだけ切り出すpublic String substring(int index),public String substring(int index,int endIndex)
+	//どのメソッドでも先頭文字は0から始まることに注意
+	//substring(a,b)はa<=x<bなので最後の文字は含まれない
+	//大文字を小文字に変換するpublic String toLowerCase()
+	//小文字を大文字に変換するpublic String toUpperCase()
+    //前後の空白を除去するpublic String trim()
+	//文字列を置き換えるpublic String replace (String before,String after)
+	//全角スペースは除去されない
+	//StringBuilderクラスを用いた連結です。stringbuilderインスタンスは内部に連結した文字列を蓄えるメモリ領域を持っている
+	//appendメソッドを呼んでバッファに文字列を追加していく（必要に応じた回数を呼び出す）
+	//最後に1回だけtoString()を呼び、完成した連結済みの文字列を取り出す。
+	//stringインスタンスが保持する文字列情報は、インスタンス化した際に初期化され以後２度と変化することはない。
+	//stringクラスに限らず、インスタンス化の後に内容が絶対に変化しないように設計されたクラスのことを不変であるといいます。
+	//不変なクラスは、参照やスレッドという技術に関連したある種の複雑な不具合が原理的に起こりえないという特徴がある
+	//以上の理由からstringクラスはあらゆるクラスから採用されます。
+	//+による連結が行われた瞬間、古いインスタンスは捨てられ、連結後の情報を持つ新しいインスタンスがnewにより生成され格納されます
+	//つまり、+演算子による数万回の文字列連結は、内部で数万回newすることを意味する
+	//newによるインスタンス生成は、計算などに比べてJVMに大きな負荷がかかる処理なので、可変なクラスとして設計されています。
+	//一方、stringbuilderは可変なクラスとして設計されているので、append（追加）メソッドの呼び出しのたびにnewを行うことなくバッファを拡大しながら新たな文字列を追記していく設計となっているため高速なのです
+	//char型は文字コードで記録されている基本型なのでint型への変換ができる
+	//プレイヤー名の条件
+	//Stringクラスのmatchメソッドを用いることで複雑だったメソッドが非常にシンプルになっている	
+	//引数で与えている[A-Z]{A-Z0-9}{9}という文字列は、文字列パターンまたは単にパターンといわれる
+	//文字列の形式的な条件を正規表現という文法に従って記述したもの
+	//matchメソッドのように文字列がパターンに従った形式を満たしている（マッチするか）を照合する処理のことをパターンマッチング
+	//通常の文字：その文字でなければならないs.match("Java")
+	//ピリオド：任意の一文字であればよいs.match("J.va")
+	//アスタリスク：直前の文字の0回以上の繰り返し"あいうxx019".matches(".*")
+	//指定回数の繰り返しhel{3}oというパターンは"HELLO"
+	public static void main(String[] args) {
+		
+		String s1 = "すっきりjava";
+		String s2 = "Java";
+		String s3 = "java";
+		
+		if(s2.equals(s3)) {
+			
+			System.out.println("s2とs3は等しい");
+			
+		}
+		if(s2.equalsIgnoreCase(s3)) {
+			
+			System.out.println("s2とs3はケースを区別しなければ等しい");
+			
+		}
+		
+		System.out.println("s1の長さは"+s1.length()+"です");
+		
+		if(s1.isEmpty()) {
+			
+			System.out.println("s1は空文字です");
+			
+		}
+		
+		String s4 = "Java and JavaScript";
+		
+		if(s4.contains("Java")) {
+			
+			System.out.println("文字列s4は、Javaを含んでいます。");
+			
+		}
+		if(s4.endsWith("Java")) {
+			
+			System.out.println("文字列s4はJavaが末尾にあります");
+			
+		}
+		
+		System.out.println("文字列s4で最初にjavaが登場する位置は"+s4.indexOf("Java"));
+		
+		System.out.println("文字列s2で最後にjavaが登場する位置は"+s4.lastIndexOf("Java"));
+		
+		String s5 = "Java programming";
+		
+		System.out.println("文字列s1の4文字目以降は"+s5.substring(3));
+		
+		System.out.println("文字列s5の4～8文字目は"+s5.substring(3,8));
+		
+		StringBuilder sb = new StringBuilder();
+		
+		for(int i = 0; i < 100; i++) {
+			
+			sb.append("Java");
+			
+		}
+		
+		String s = sb.toString();
+		
+		System.out.println(s);
+		
+		
+		String str5 = "こんにちはjava";
+		
+		char[] date1 = str5.toCharArray();
+		//byte[] date2 = str5.getBytes("utf-8");
+		byte[] date3 = str5.getBytes();
+		
+		System.out.println(date1);
+		System.out.println(date3);
+	
+	
+	}
+
+}
+
+</div>
