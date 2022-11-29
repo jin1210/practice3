@@ -893,7 +893,7 @@ public class Code8_1_8_16 {
 public class Main {
 
 	public static void main(String[] args) {
-		
+
 		//javaの仮想世界と表現してきたものは、実際には「コンピューターのメモリ領域です」
 		//この領域は、javaのプログラムを実行する際に、JVMが大量にメモリ領域を使って準備するもので、ヒープといいます。
 		//ヒープ領域はjavaを実行したときに確保されるメモリー領域
@@ -952,77 +952,77 @@ public class Main {
 		//なぜならコンストラクタを呼び出せるのはJVMだけだからです。
 		//this(引数)でJVMにコンストラクタの起動を依頼することが可能
 		//this.メンバ名は自分自身のインスタンスを表すが、this.(引数)は同一クラスのコンストラクタを呼び出すためのもの
-		
-		
+
+
 		String t = new String("こんいちは");
 		System.out.println(t);
-		
+
 		Sword s = new Sword();
 		s.name = "炎の剣";
 		s.damage = 10;
-		
+
 		Hero h1;//この段階ではHero型の箱が準備されるだけで、この箱には数値や文字列を入れることはできません。
 		h1 = new Hero();//この行は右辺の実行結果がhに代入された状態。
-		
+
 		h1.hp = 100;
 		h1.name = "ミナト";
 		h1.sword = s;//swordフィールドに生成済みの剣インスタンスの番地を代入。
-		
+
 		System.out.println("現在の武器は"+h1.sword.name);
-		
+
 		Hero h2;
 		h2 = new Hero();
-		
+
 		//h2 = h1;h1のアドレスを、h2のアドレスに入れる。
 		h2.hp = 200;
 		h2.name = "アスカ";
-		
+
 		Wizard w = new Wizard();
-		
+
 		w.name = "スガワラ";
 		w.hp = 100;
-		
+
 		System.out.println(h1.hp);
-		
+
 		w.heal(h1);
 		w.heal(h2);
 		w.heal(h2);
-		
+
 		Hero h = new Hero("あすが");
-		
+
 		System.out.println(h.hp);
 		System.out.println(h.name);
-		
+
 	}
 
 }
 package chap09;
 
-public class Hero {	
+public class Hero {
 
 	String name;
 	int hp;
 	Sword sword;
-	
+
 	public void attack() {
-		
+
 		System.out.println(this.name + "は攻撃した");
 		System.out.println("敵に５ポイントのダメージを与えた");
-		
+
 	}
-	
+
 	public Hero() {//クラス名と同じ
-		
+
 		this.hp = 100;//newされた直後に自動的に実行される処理を書いたメソッドです。
 	}
 	//このクラスがnewされた直後に自動的に実行される
 	//コンストラクタという。
-	
+
 	public Hero(String name) {
-		
+
 		this.hp = 100;
 		this.name = name;
-		
+
 	}
 	//これでnewするときに名前の初期値も指定できるように
 	//コンストラクタに渡すべき引数をnewするときに指定します。
@@ -1033,7 +1033,7 @@ public class Sword {
 
 	String name;
 	int damage;
-	
+
 }
 package chap09;
 
@@ -1041,16 +1041,16 @@ public class Wizard {
 
 	String name;
 	int hp;
-	
+
 	public void heal(Hero h) {
-		
+
 		h.hp += 10;
 		System.out.println(h.name + "のHPを10回復した");
-		
+
 	}
-	
-	
-	
+
+
+
 }
 </div>
 <div class="11月18日">
@@ -1060,39 +1060,39 @@ public class Hero {
 
 	String name;
 	int hp = 100;
-	
+
 	public void attack(Matango s) {
-		
+
 		System.out.println(this.name+"の攻撃");
-		
+
 		s.hp -= 5;
-		
+
 		System.out.println("5ポイントのダメージを与えた");
-		
+
 	}
-	
+
 	public void run() {
-		
+
 		System.out.println(this.name+"は逃げ出した");
-		
+
 	}
-	
+
 	public final void slip() {
-		
+
 		this.hp -= 5;
-		
+
 		System.out.println(this.name+"は転んだ");
 		System.out.println("5のダメージ");
-		
+
 	}
-	
+
 	public Hero() {
-		
+
 		System.out.println("ヒーロークラスのコンストラクタが起動しました");
-		
+
 	}
-	
-	
+
+
 }
 package chap10;
 
@@ -1100,23 +1100,23 @@ public class Item {
 
 	String name;
 	int price;
-	
+
 	public Item(String name) {
-		
+
 		this.name = name;
 		this.price = 0;
-		
+
 	}
-	
+
 	public Item(String name,int price) {
-		
+
 		this.name = name;
 		this.price = price;
-		
+
 	}
-	
-	
-	
+
+
+
 }
 package chap10;
 
@@ -1124,72 +1124,72 @@ public class Matango {
 
 	String name;
 	int hp;
-	
+
 }
 package chap10;
 
 public class SuperHero extends Hero {
 
 	boolean flying;
-	
+
 	public void attack(Matango s) {
-		
+
 //		System.out.println(this.name+"の攻撃");
 //		s.hp -= 5;
 //		System.out.println("5ポイントのダメージを与えた");
-//		
+//
 //		if(this.flying) {
-//			
+//
 //			System.out.println(this.name+"の攻撃");
 //			s.hp += 5;
 //			System.out.println("5ポイントのダメージを与えた");
-		
+
 		super.attack(s);
 		if(this.flying) {
-			
+
 			super.attack(s);
-			
+
 		}
-	
+
 	}
-	
+
 	public void fly() {
-		
+
 		this.flying = true;
 		System.out.println("飛び上がった");
-		
+
 	}
-	
+
 	public void land() {
-		
+
 		this.flying = false;
 		System.out.println("着地した");
-		
+
 	}
-	
+
 	public void run() {
-		
+
 		System.out.println(this.name+"は逃げ出した");
-		
+
 	}
-	
+
 	public SuperHero() {
-		
+
 		System.out.println("スーパーヒーローのコンストラクタが起動");
-		
+
 	}
-	
+
 }
 package chap10;
 
 public class Weapon extends Item{
-	
+
 	public Weapon() {
-		
+
 		super("名無しの剣");
-		
+
 	}
-	
+
 }
 package chap10;
 
@@ -1205,7 +1205,7 @@ public class Main {
 	//このような２つのクラスの関係を継承関係といいます。
 	//javaでは複数のクラスを親として多重継承を定義することを許していない。
 	//親クラスを継承して子クラスを宣言する際に、親クラスのメンバを子クラス側で上乗せすることをオーバーライドといいます。
-	//名前の似ているオーバーロードはメソッドの名前は一緒だけど引数が違うこと。	
+	//名前の似ているオーバーロードはメソッドの名前は一緒だけど引数が違うこと。
 	//①親クラスに同じメンバがなければそのメンバは追加になる。
 	//②親クラスに同じメンバがあれば、そのメンバは上乗せされ上のものしか探されない。
 	//superheroクラスにrun();を追加すると、javaは外側のメソッドから探しに行って見つかり次第処理を終了する。
@@ -1234,24 +1234,24 @@ public class Main {
 	//継承関係を表す図を継承ツリーと呼ぶ
 	//しかし継承は、ある二つのクラスに特化・汎化の関係があることを示すための道具でもある
 	//矢印の先が一番抽象的になる
-	
+
 	public static void main(String[] args) {
-		
+
 		Hero h = new Hero();
-		
+
 		h.run();
-		
+
 		SuperHero sh = new SuperHero();
-		
+
 		sh.run();
-		
+
 		Weapon w = new Weapon();
-		
-		
+
+
 	}
-	
-	
-	
+
+
+
 }
 </div>
 <div class="11月19日">
@@ -1299,19 +1299,19 @@ public class Main {
 	//隠れた抽象メソッドが潜んでいる
 	//キャラクタークラスが持つすべてのメンバを継承している
 	//ダンサークラス字体のソースコードに抽象メソッドはなくても、親クラスから抽象メソッドを継承して持っている
-	//ダンサーは処理の内容が未確定なメソッドを持っている未確定なメソッドを持っているならばダンサークラスも抽象くらすにしなければならなi 
+	//ダンサーは処理の内容が未確定なメソッドを持っている未確定なメソッドを持っているならばダンサークラスも抽象くらすにしなければならなi
 	//エラーの解消にはダンサークラスの宣言にabstractをつけて抽象クラスにするか内部の未完成部分を全部なくす
 	//抽象クラスにするとコンパイルエラーは消えるが、インスタンス化が出来なくなる
 	//
-	
+
 	public static void main(String[] args) {
-		
+
 		Hero h = new Hero();
-		
+
 		Matango m = new Matango();
-		
+
 		h.attack(m);
-		
+
 	}
 }
 </div>
@@ -1360,7 +1360,7 @@ public class Main {
 	//隠れた抽象メソッドが潜んでいる
 	//キャラクタークラスが持つすべてのメンバを継承している
 	//ダンサークラス字体のソースコードに抽象メソッドはなくても、親クラスから抽象メソッドを継承して持っている
-	//ダンサーは処理の内容が未確定なメソッドを持っている未確定なメソッドを持っているならばダンサークラスも抽象くらすにしなければならなi 
+	//ダンサーは処理の内容が未確定なメソッドを持っている未確定なメソッドを持っているならばダンサークラスも抽象くらすにしなければならなi
 	//エラーの解消にはダンサークラスの宣言にabstractをつけて抽象クラスにするか内部の未完成部分を全部なくす
 	//抽象クラスにするとコンパイルエラーは消えるが、インスタンス化が出来なくなる
 	//それまで未定だったメソッドの内容を確定させることを実装（implements）すると表現することもあります。
@@ -1397,16 +1397,16 @@ public class Main {
 	//クラスにはないインタフェイスの特権
 	//異なる実装が衝突する問題が発生しないため、複数の親インタフェースによる多重継承が認められている。
 	//オーバーライドをして処理の内容を確定しない場合、implements(実装)ではなくextends(拡張)をつかう
-	
-	
+
+
 	public static void main(String[] args) {
-		
+
 		Hero h = new Hero();
-		
+
 		Matango m = new Matango();
-		
+
 		h.attack(m);
-		
+
 	}
 }
 </div>
@@ -1420,10 +1420,10 @@ public class Main {
 	//例えば、レンタカーを使用して車を運転する場合、厳密には初めて乗る車にもかかわらず、多くの人は問題なく運転できます。
 	//細かいところは違うけど、ざっくり言えば同じ車だから運転できる
 	//ざっくりとらえる方法が、オブジェクト指向三大機能の一つ、多態性なのです。
-	
-	
-	
-	
+
+
+
+
 }
 </div>
 <div class="11月22日">
@@ -1438,7 +1438,7 @@ public class Main {
 	//ざっくりとらえる方法が、オブジェクト指向三大機能の一つ、多態性なのです。
 	//character c = new superHero();はsuperheroのアドレスをcharacterクラスのcに入れている
     //本当はsuperheroインスタンスなのですが、あくまでもcharacterとしてとらえて利用することになる
-	//あるインスタンスをどのようにとらえるかはどの型の変数に代入するか（箱の形）で決まります	
+	//あるインスタンスをどのようにとらえるかはどの型の変数に代入するか（箱の形）で決まります
 	//superheroがキャラクタークラスに入ることでjavaは基本的にキャラクターメンバを参照する
 	//overrideしているメソッドはもともとあるメソッドの上に載っているのでjavaは外側から探しに行ってoverrideしているものをみつける
 	//superheroモキャラクターの一種ですからキャラクターが入っていますという箱に入っていても別に矛盾はない
@@ -1468,61 +1468,61 @@ public class Main {
 	//インスタンスは何型の箱に入っていようと自身の型のメソッドが動作する
 	//呼び出し側は相手を同一視し、同じように呼び出すのに呼び出される側は、きちんと自分に決められた動きをするという特性から多態性という名前がついている
 	public static void main(String[] args) {
-		
+
 		Wizard w = new Wizard();
-		
+
 		Character c = w;
-		
+
 		Matango m = new Matango();
-	
+
 		c.name = "アサカ";
 		c.attack(m);
 		c.run();
-		
+
 		//c.fireball(m);
-		
+
 		Slime s = new Slime();
 		Monster o = new Slime();
 		s.run();
 		o.run();
-		
+
 		if(c instanceof Wizard) {
-			
+
 			Wizard h = (Wizard)c;
 			h.fireball(m);
-			
+
 		}
-		
-		
+
+
 		Hero h1 = new Hero();
 		Hero h2 = new Hero();
 		Thief t1 = new Thief();
 		Wizard w1 = new Wizard();
 		Wizard w2 = new Wizard();
-		
+
 		h1.hp += 50;
 		h2.hp += 50;
 		t1.hp += 50;
 		w1.hp += 50;
 		w2.hp += 50;
-		
+
 		Character[] z = new Character[5];
-		
+
 		z[0] = new Hero();
 		z[1] = new Hero();
 		z[2] = new Thief();
 		z[3] = new Wizard();
 		z[4] = new Wizard();
-		
+
 		for(Character ch : z) {
-			
+
 			ch.hp += 50;
-			
+
 		}
-		
-	
+
+
 	}
-		
+
 }
 </div>
 <div class="11月23日">
@@ -1554,10 +1554,10 @@ public class Main {
 	//カプセル化…あるクラスが外部から直接触られないよう、メソッドというカプセルによってフィールドが保護されているようにみえること
 	//不具合とは、現実世界と仮想世界が食い違ってしまうことである
 	public static void main(String[] args) {
-		
-		
-		
-		
+
+
+
+
 
 	}
 
@@ -1620,41 +1620,41 @@ public class Main {
 
 		Empty e = new Empty();
 		String s = e.toString();
-		
+
 		System.out.println(s);
-		
+
 		Object o1 = new Empty();
 		Object o2 = new Hero();
 		Object o3 = "こんにちは";
-		
+
 		Hero h = new Hero();
 		h.name = "ミナト";
 		h.hp = 100;
-		
+
 		System.out.println(h.toString());
-		
+
 		Hero h1 = new Hero();
 		h1.name = "ミナト";
 		h1.hp = 100;
-		
+
 		Hero h2 = new Hero();
 		h2.name = "ミナト";
 		h2.hp = 100;
-		
+
 		if(h1.equals(h2)==true) {
-			
+
 			System.out.println("同じ内容です");
-			
+
 		}else {
-			
+
 			System.out.println("違う内容です");
-		
+
 		}
-	
+
 		System.out.println(h1.hp);
 		System.out.println(Hero.money);
-		
-		
+
+
 	}
 
 }
@@ -1703,7 +1703,7 @@ public class Main {
 	//一方、stringbuilderは可変なクラスとして設計されているので、append（追加）メソッドの呼び出しのたびにnewを行うことなくバッファを拡大しながら新たな文字列を追記していく設計となっているため高速なのです
 	//char型は文字コードで記録されている基本型なのでint型への変換ができる
 	//プレイヤー名の条件
-	//Stringクラスのmatchメソッドを用いることで複雑だったメソッドが非常にシンプルになっている	
+	//Stringクラスのmatchメソッドを用いることで複雑だったメソッドが非常にシンプルになっている
 	//引数で与えている[A-Z]{A-Z0-9}{9}という文字列は、文字列パターンまたは単にパターンといわれる
 	//文字列の形式的な条件を正規表現という文法に従って記述したもの
 	//matchメソッドのように文字列がパターンに従った形式を満たしている（マッチするか）を照合する処理のことをパターンマッチング
@@ -1712,76 +1712,76 @@ public class Main {
 	//アスタリスク：直前の文字の0回以上の繰り返し"あいうxx019".matches(".*")
 	//指定回数の繰り返しhel{3}oというパターンは"HELLO"
 	public static void main(String[] args) {
-		
+
 		String s1 = "すっきりjava";
 		String s2 = "Java";
 		String s3 = "java";
-		
+
 		if(s2.equals(s3)) {
-			
+
 			System.out.println("s2とs3は等しい");
-			
+
 		}
 		if(s2.equalsIgnoreCase(s3)) {
-			
+
 			System.out.println("s2とs3はケースを区別しなければ等しい");
-			
+
 		}
-		
+
 		System.out.println("s1の長さは"+s1.length()+"です");
-		
+
 		if(s1.isEmpty()) {
-			
+
 			System.out.println("s1は空文字です");
-			
+
 		}
-		
+
 		String s4 = "Java and JavaScript";
-		
+
 		if(s4.contains("Java")) {
-			
+
 			System.out.println("文字列s4は、Javaを含んでいます。");
-			
+
 		}
 		if(s4.endsWith("Java")) {
-			
+
 			System.out.println("文字列s4はJavaが末尾にあります");
-			
+
 		}
-		
+
 		System.out.println("文字列s4で最初にjavaが登場する位置は"+s4.indexOf("Java"));
-		
+
 		System.out.println("文字列s2で最後にjavaが登場する位置は"+s4.lastIndexOf("Java"));
-		
+
 		String s5 = "Java programming";
-		
+
 		System.out.println("文字列s1の4文字目以降は"+s5.substring(3));
-		
+
 		System.out.println("文字列s5の4～8文字目は"+s5.substring(3,8));
-		
+
 		StringBuilder sb = new StringBuilder();
-		
+
 		for(int i = 0; i < 100; i++) {
-			
+
 			sb.append("Java");
-			
+
 		}
-		
+
 		String s = sb.toString();
-		
+
 		System.out.println(s);
-		
-		
+
+
 		String str5 = "こんにちはjava";
-		
+
 		char[] date1 = str5.toCharArray();
 		//byte[] date2 = str5.getBytes("utf-8");
 		byte[] date3 = str5.getBytes();
-		
+
 		System.out.println(date1);
 		System.out.println(date3);
-	
-	
+
+
 	}
 
 }
@@ -1843,7 +1843,7 @@ public class Main {
 	//一方、stringbuilderは可変なクラスとして設計されているので、append（追加）メソッドの呼び出しのたびにnewを行うことなくバッファを拡大しながら新たな文字列を追記していく設計となっているため高速なのです
 	//char型は文字コードで記録されている基本型なのでint型への変換ができる
 	//プレイヤー名の条件
-	//Stringクラスのmatchメソッドを用いることで複雑だったメソッドが非常にシンプルになっている	
+	//Stringクラスのmatchメソッドを用いることで複雑だったメソッドが非常にシンプルになっている
 	//引数で与えている[A-Z]{A-Z0-9}{9}という文字列は、文字列パターンまたは単にパターンといわれる
 	//文字列の形式的な条件を正規表現という文法に従って記述したもの
 	//matchメソッドのように文字列がパターンに従った形式を満たしている（マッチするか）を照合する処理のことをパターンマッチング
@@ -1869,90 +1869,90 @@ public class Main {
 	//formatメソッドの第一引数に指定するのは、組み立てる文字列のひな型を指定する書式指定文字列と呼ばれるもので、専用の記法をもちいて記述します。
 	//特に％記号はプレースホルダと呼ばれ、第二引数で指定した
 	public static void main(String[] args) {
-		
+
 		String s1 = "すっきりjava";
 		String s2 = "Java";
 		String s3 = "java";
-		
+
 		if(s2.equals(s3)) {
-			
+
 			System.out.println("s2とs3は等しい");
-			
+
 		}
 		if(s2.equalsIgnoreCase(s3)) {
-			
+
 			System.out.println("s2とs3はケースを区別しなければ等しい");
-			
+
 		}
-		
+
 		System.out.println("s1の長さは"+s1.length()+"です");
-		
+
 		if(s1.isEmpty()) {
-			
+
 			System.out.println("s1は空文字です");
-			
+
 		}
-		
+
 		String s4 = "Java and JavaScript";
-		
+
 		if(s4.contains("Java")) {
-			
+
 			System.out.println("文字列s4は、Javaを含んでいます。");
-			
+
 		}
 		if(s4.endsWith("Java")) {
-			
+
 			System.out.println("文字列s4はJavaが末尾にあります");
-			
+
 		}
-		
+
 		System.out.println("文字列s4で最初にjavaが登場する位置は"+s4.indexOf("Java"));
-		
+
 		System.out.println("文字列s2で最後にjavaが登場する位置は"+s4.lastIndexOf("Java"));
-		
+
 		String s5 = "Java programming";
-		
+
 		System.out.println("文字列s1の4文字目以降は"+s5.substring(3));
-		
+
 		System.out.println("文字列s5の4～8文字目は"+s5.substring(3,8));
-		
+
 		StringBuilder sb = new StringBuilder();
-		
+
 		for(int i = 0; i < 100; i++) {
-			
+
 			sb.append("Java");
-			
+
 		}
-		
+
 		String s = sb.toString();
-		
+
 		System.out.println(s);
-		
-		
+
+
 		String str5 = "こんにちはjava";
-		
+
 		char[] date1 = str5.toCharArray();
 		//byte[] date2 = str5.getBytes("utf-8");
 		byte[] date3 = str5.getBytes();
-		
+
 		System.out.println(date1);
 		System.out.println(date3);
-	
+
 		String x = "abc,def:ghi";
 		String[] words = x.split("[,:]");
-		
+
 		for(String w : words) {
-			
+
 			System.out.println(w+"->");
-			
+
 		}
-		
+
 		String v = x.replaceAll("[beh]","X");
-		
+
 		System.out.println(v);
-		
-		
+
+
 	}
 
 }
-</div>
+</div
